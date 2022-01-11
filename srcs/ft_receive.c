@@ -16,20 +16,25 @@ void ft_receive(int sockfd, t_point *data)
 {
 	char buff[SEND_SIZE];
 	char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
+	// char *conti = "ok";
 	// int i = 0;
-
+	bzero(buff, SEND_SIZE);
 	printf("START RECEIVE\n");
 	read(sockfd, buff, SEND_SIZE);
 	write(data->fd_r, buff, SEND_SIZE);
-	while (strncmp(buff, end, 40) != 0)
+	while (strncmp(buff, end, 39) != 0)
 	{
+
 		read(sockfd, buff, SEND_SIZE);
-		if (strncmp(buff, end, 40) != 0)
+		if (strncmp(buff, end, 39) != 0)
+		{
 			write(data->fd_r, buff, SEND_SIZE);
+		}
+		// bzero(buff, SEND_SIZE);
 		// i ++;
 	}
 	// read(sockfd, buff, SEND_SIZE);
-	// printf("buff : %s\n", buff);
+	printf("buff : %s\n", buff);
 	printf("END RECEIVE\n");
 
 	// for (;;) {

@@ -15,11 +15,14 @@ void ft_send(int connfd, t_point *data)
 	char buff[SEND_SIZE];
 	// int n;
 	char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
+	// char *conti = "ok";
+	bzero(buff, SEND_SIZE);
 	printf("START SEND\n");
 	while (read(data->fd_s, buff, SEND_SIZE) > 0)
 	{
 		// printf("%s", buff);
 		write(connfd, buff, SEND_SIZE);
+		usleep(50);
 	}
 	// printf("\n%s\n", end);
 	write(connfd, end, 40);

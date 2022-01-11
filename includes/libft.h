@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:25:39 by guderram          #+#    #+#             */
-/*   Updated: 2022/01/11 07:17:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/01/11 08:27:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@
 
 # include <string.h> // strcmp
 
+#include <strings.h> // bzero
+
 # define COLOR_GREEN "\033[0;32m"
 # define COLOR_RED "\033[0;31m"
 # define COLOR_YELLOW "\033[0;33m"
 # define COLOR_NEUTRAL "\033[0m"
 
-# define SEND_SIZE 80 // taille des paquets a envoyer
+# define SEND_SIZE 1024 // taille des paquets a envoyer
 # define PORT 26565 // port utilise pour la connection
 # define SA struct sockaddr // raccourci pour la structure TCP
 
