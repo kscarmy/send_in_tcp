@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:25:39 by guderram          #+#    #+#             */
-/*   Updated: 2022/01/11 08:27:54 by guderram         ###   ########.fr       */
+/*   Updated: 2022/01/11 09:27:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 
 # include <stdlib.h> // malloc and free
 
+
 # include <string.h> // strcmp
 
 #include <strings.h> // bzero
@@ -42,16 +43,17 @@
 # define COLOR_YELLOW "\033[0;33m"
 # define COLOR_NEUTRAL "\033[0m"
 
-# define SEND_SIZE 1024 // taille des paquets a envoyer
+# define SEND_SIZE 2048 // taille des paquets a envoyer
 # define PORT 26565 // port utilise pour la connection
 # define SA struct sockaddr // raccourci pour la structure TCP
 
 
 typedef struct j_point
 {
-	int		error; // Si error != 0 alors une erreur est survenue, avec pour reference sa valeur
-	int		fd_s; // file descriptor sending
-	int		fd_r; // file descriptor receiving
+	int				error; // Si error != 0 alors une erreur est survenue, avec pour reference sa valeur
+	int				fd_s; // file descriptor sending
+	int				fd_r; // file descriptor receiving
+	long	long	i; // number of strings send
 	
 }			t_point;
 

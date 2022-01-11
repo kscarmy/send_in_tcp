@@ -2,22 +2,41 @@
 
 void	ft_is_openable(t_point *data, char *str2) // verifie si le fichier existe
 {
+	char buff[SEND_SIZE];
 	data->fd_s = open(str2, O_RDONLY);
+	data->i = 0;
 	if (data->fd_s == -1)
 	{
 		data->error = 3;
 	}
+	else
+	{
+		while (read(data->fd_s, buff, SEND_SIZE) > 0)
+		{
+			// printf("OK\n");
+			data->i = data->i + 1;
+		}
+		// printf("ztf\n");
+	}
+	close(data->fd_s);
+	data->fd_s = open(str2, O_RDONLY);
 }
 
 // Function designed for chat between client and server.
 void ft_send(int connfd, t_point *data)
 {
 	char buff[SEND_SIZE];
-	// int n;
-	char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
-	// char *conti = "ok";
+	// long long i = 0;
+	char size[42];
+	// char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
+	sprintf(size, "%lld", data->i);
+	write(connfd, size, 42);
+	// printf("size : %s\n", size);
+	// size = itoa(data->i);
 	bzero(buff, SEND_SIZE);
-	printf("START SEND\n");
+	printf("START SEND %lld\n", data->i);
+
+
 	while (read(data->fd_s, buff, SEND_SIZE) > 0)
 	{
 		// printf("%s", buff);
@@ -25,7 +44,7 @@ void ft_send(int connfd, t_point *data)
 		usleep(50);
 	}
 	// printf("\n%s\n", end);
-	write(connfd, end, 40);
+	// write(connfd, end, 40);
 	printf("STOP SEND\n");
 
 	// // infinite loop for chat
@@ -104,7 +123,7 @@ void	ft_main_send(t_point *data) // lancement de toutes les merdes pour le proto
 	ft_send(connfd, data);
 
 	// After chatting close the socket
-	printf("in main send %d\n", data->error);
+	// printf("in main send %d\n", data->error);
 	close(sockfd);
 }
 

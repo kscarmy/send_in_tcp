@@ -15,26 +15,28 @@ void	ft_create_file_and_open_it(t_point *data, char *str2) // cree un fichier vi
 void ft_receive(int sockfd, t_point *data)
 {
 	char buff[SEND_SIZE];
-	char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
+	// char *end = "4c075aba26f1fdf8228619c6289e2fd2a05ba613";
+	long long i;
+	int u = 0;
 	// char *conti = "ok";
 	// int i = 0;
 	bzero(buff, SEND_SIZE);
 	printf("START RECEIVE\n");
 	read(sockfd, buff, SEND_SIZE);
-	write(data->fd_r, buff, SEND_SIZE);
-	while (strncmp(buff, end, 39) != 0)
+	i = atoi(buff);
+	printf("i :: %lld\n", i);
+	// write(data->fd_r, buff, SEND_SIZE);
+	while (u < i)
 	{
 
 		read(sockfd, buff, SEND_SIZE);
-		if (strncmp(buff, end, 39) != 0)
-		{
-			write(data->fd_r, buff, SEND_SIZE);
-		}
+		write(data->fd_r, buff, SEND_SIZE);
+		u++;
 		// bzero(buff, SEND_SIZE);
 		// i ++;
 	}
 	// read(sockfd, buff, SEND_SIZE);
-	printf("buff : %s\n", buff);
+	// printf("buff : %s\n", buff);
 	printf("END RECEIVE\n");
 
 	// for (;;) {
