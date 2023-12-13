@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:25:39 by guderram          #+#    #+#             */
-/*   Updated: 2022/01/11 09:27:54 by guderram         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:04:47 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define SEND_SIZE 2048 // taille des paquets a envoyer
 # define PORT 26565 // port utilise pour la connection
 # define SA struct sockaddr // raccourci pour la structure TCP
-
+# define IP "kscarmy.freeboxos.fr"
 
 typedef struct j_point
 {

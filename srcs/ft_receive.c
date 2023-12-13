@@ -73,7 +73,7 @@ void	ft_main_receive(t_point *data)
 
 	// assign IP, PORT
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_addr.s_addr = inet_addr("78.196.240.69");
+	servaddr.sin_addr.s_addr = inet_addr(IP);
 	// servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	servaddr.sin_port = htons(PORT);
 
